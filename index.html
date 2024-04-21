@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>project</title>
+        <link rel="stylesheet" type="text/css" href="project.css">
+    </head>
+    <body>
+        <div class="class1">
+            <div class="search">
+                <input type="text"  placeholder="     enter the city name" spellcheck="false" onkeypress="keypress()" >
+                <button  ><img src="C:\Users\Asus\Downloads\search.png" width="50px"></button>
+            </div>
+            <div class="error" >
+                <p>check the city name</p>
+            </div>
+            <div class="weather">
+                <img src="C:\Users\Asus\Downloads\images\rain.png" class="weather_icon">
+                <h1 class="temp">20°c</h1>
+                <h2 class="city">NEW YORK</h2>
+                <div class="details">
+                    <div class="column">
+                        <img src="C:\Users\Asus\Downloads\images\humidity.png">
+                        <div>
+                            <p class="humidity">50%</p>
+                            <p> humidity</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <img src="C:\Users\Asus\Downloads\images\wind.png">
+                        <div>
+                            <p class="wind">30km/hr</p>
+                            <p>wind</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const apikey = "df07c081215d3db6ed523a25932745d7";
+            const apiurl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+            
+            const searchbox = document.querySelector(".search input");
+            const searchbtn = document.querySelector(".search button");
+            const weathericon = document.querySelector(".weather_icon");
+            async function checkweather(city){
+                const response = await fetch(apiurl +city+`&appid=${apikey}`);
+                if(response.status==404){
+                    document.querySelector('.error').style.display="block";
+                    document.querySelector('.weather').style.display="none";
+                }else{
+                    var data = await response.json();
+
+                console.log(data);
+                document.querySelector('.city').innerHTML=data.name;
+                document.querySelector('.temp').innerHTML=Math.round(data.main.temp)+"°c";
+                document.querySelector('.humidity').innerHTML=data.main.humidity+"%";
+                document.querySelector('.wind').innerHTML=data.wind.speed+"km/hr";
+
+                if(data.weather[0].main == "Clouds"){
+                    weathericon.src = "C:/Users/Asus/Downloads/images/clouds.png";
+                }else  if(data.weather[0].main == "Clear"){
+                    weathericon.src = "C:/Users/Asus/Downloads/images/clear.png";
+                }else  if(data.weather[0].main == "Rain"){
+                    weathericon.src = "C:/Users/Asus/Downloads/images/rain.png";
+                }else  if(data.weather[0].main == "Drizzle"){
+                    weathericon.src = "C:/Users/Asus/Downloads/images/drizzle.png";
+                }else  if(data.weather[0].main == "Mist"){
+                    weathericon.src = "C:/Users/Asus/Downloads/images/mist.png";
+                }else  if(data.weather[0].main == "Snow"){
+                    weathericon.src = "C:/Users/Asus/Downloads/images/snow.png";
+                }
+                document.querySelector('.error').style.display="none";
+                document.querySelector('.weather').style.display="block";
+                }
+                
+            }
+            
+            searchbtn.addEventListener("click",()=>{
+                checkweather(searchbox.value);
+            });
+
+            document.addEventListener('change', ()=> {
+        //         if (event.key === 'Enter') {
+        //             checkweather(searchbox.value); 
+        //    }
+        //   ' keydown'
+           checkweather(searchbox.value); 
+           });
+
+        
+            
+        </script>
+    </body>
+</html>
