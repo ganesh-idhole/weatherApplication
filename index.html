@@ -8,7 +8,7 @@
         <div class="class1">
             <div class="search">
                 <input type="text"  placeholder="     enter the city name" spellcheck="false" onkeypress="keypress()" >
-                <button  ><img src="images/search.png" width="50px"></button>
+                <button  ><img src="search.png" width="50px"></button>
             </div>
             <div class="error" >
                 <p>check the city name</p>
@@ -57,7 +57,7 @@
                 document.querySelector('.wind').innerHTML=data.wind.speed+"km/hr";
 
                 if(data.weather[0].main == "Clouds"){
-                    weathericon.src = "images/clouds.png";
+                    weathericon.src = "mages/clouds.png";
                 }else  if(data.weather[0].main == "Clear"){
                     weathericon.src = "images/clear.png";
                 }else  if(data.weather[0].main == "Rain"){
