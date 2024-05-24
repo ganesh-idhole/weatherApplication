@@ -28,9 +28,9 @@
     background-color:whitesmoke;
     flex: 0.95;
     background-image: url('.\images\cloudy.png');
-    padding-left: 40px; /* Adjust the padding as needed */
+    padding-left: 40px; 
     background-repeat: no-repeat;
-    background-size: 20px 20px; /* Adjust the size of the image */
+    background-size: 20px 20px; 
     background-position: 9px center;
     
 }
