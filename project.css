@@ -27,7 +27,7 @@
     padding-left: 50px;
     background-color:whitesmoke;
     flex: 0.95;
-    background-image: url('images/cloudy.png');
+    background-image: url('.\images\cloudy.png');
     padding-left: 40px; /* Adjust the padding as needed */
     background-repeat: no-repeat;
     background-size: 20px 20px; /* Adjust the size of the image */
